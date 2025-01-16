@@ -9,7 +9,7 @@
 
     h2 {
         font-size: 50px;
-        color: rgba(245, 245, 245, 0.8);
+        color: rgba(245, 245, 245, 0.7);
         
     }
     
@@ -40,9 +40,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    border: 2px solid gray;
-    background-color: #97dcf7;
-    padding: 40px;
+    border: 1px solid gray;
+    padding: 60px 40px 60px 40px;
     border-radius: 12px;
 
     h3 {

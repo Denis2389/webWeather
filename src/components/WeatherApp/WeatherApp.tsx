@@ -14,6 +14,8 @@ const WeatherApp = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [currentDate, setCurrentDate] = useState<string>('')
 
+  
+
   const API_KEY = "87910f1f9ea8d899b035c4081cbb9a2a";
   const WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather`;
   const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast";
