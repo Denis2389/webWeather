@@ -4,6 +4,8 @@ import axios from "axios";
 import Forecast from "../Forecast/Forecast";
 import styles from './WeatherApp.module.scss'
 import getCurrentDate from "../CurrentDay/CurrentDay";
+import { FaWind, FaDroplet } from "react-icons/fa6";
+import { CiTempHigh } from "react-icons/ci";
 
 const WeatherApp = () => {
   const [city, setCity] = useState<string>("");
@@ -88,33 +90,62 @@ const WeatherApp = () => {
 
 
   return (
-    <div className={styles.container}>
-      <input
+    <div className={styles.wrapper}>
+      {/* <input
         type="text"
         value={city}
         onChange={(e) => setCity(e.target.value)}
         placeholder="Enter city name"
         onKeyDown={handleKeyDown}
-      />
+      /> */}
 
       {loading && <p>loading..</p>}
 
       {weather && (
-        <div>
-          <h2>{weather.name}</h2>
-          <h3>{currentDate}</h3>
-          <p>{weather.main.temp}°C</p>
-          <img
-            src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
-            alt={weather.weather[0].description}
-          />
-          <p>{weather.weather[0].description}</p>
-          <p>{weather.main.humidity}%</p>
-          <p>{weather.wind.speed} м/с</p>
+        <div className={styles.mainContainer}>
+          <div className={styles.nameFlex}>
+            <h2>{weather.name}</h2>
+            <input
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              placeholder="Enter city name"
+              onKeyDown={handleKeyDown}
+            />
+          </div>
+          <div className={styles.titleContainer}>
+            <img
+              src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+              alt={weather.weather[0].description}
+            />
+            <div className={styles.desContainer}>
+              <h3>Cьогоднi {currentDate}</h3>
+              <p className={styles.temperature}>
+                <CiTempHigh size={53} />
+                {Math.round(weather.main.temp)}°C
+              </p>
+              <p className={styles.weather}>
+                {weather.weather[0].description.charAt(0).toUpperCase() +
+                  weather.weather[0].description.slice(1)}
+              </p>
+              <div className={styles.windHumCont}>
+                <p className={styles.hum}>
+                  &nbsp;
+                  <FaDroplet />
+                  &nbsp;Wind&nbsp;&nbsp;|&nbsp;&nbsp;{weather.main.humidity}%
+                </p>
+                <p className={styles.wind}>
+                  &nbsp;
+                  <FaWind />
+                  &nbsp;Hum&nbsp;&nbsp;|&nbsp;&nbsp;{weather.wind.speed} м/с
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
 
-      {forecast && <Forecast forecast={forecast} weather={weather}/>}
+      {forecast && <Forecast forecast={forecast} weather={weather} />}
     </div>
   );
 };

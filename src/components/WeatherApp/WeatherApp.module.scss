@@ -1,0 +1,80 @@
+.wrapper {
+    padding: 80px;
+}
+
+.nameFlex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+        font-size: 50px;
+        color: rgba(245, 245, 245, 0.8);
+        
+    }
+    
+    input {
+        background: none;
+        width: 200px;
+        height: 30px;
+        color: gray;
+        border: none;
+        border-bottom: 1px solid whitesmoke;
+        font-size: 18px;
+    }
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+
+    img {
+        width: 70px;
+    }
+}
+
+.desContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid gray;
+    background-color: #97dcf7;
+    padding: 40px;
+    border-radius: 12px;
+
+    h3 {
+        font-weight: 400;
+        margin-bottom: 15px;
+        color: white;
+    }
+
+    p {
+        display: flex;
+        align-items: center;
+    }
+
+}
+
+.temperature {
+    font-size: 60px;
+    color: white;
+}
+
+.weather {
+    margin-top: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+.hum {
+    color: rgba(255, 255, 255, 0.82);
+    margin-top: 20px;
+}
+
+.wind {
+    color: rgba(255, 255, 255, 0.82);
+    margin-top: 15px;
+}

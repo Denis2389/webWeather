@@ -14,12 +14,15 @@ const Forecast = ({ forecast, weather }: { forecast: any }) => {
               {dailyForecast.map((item: any, index: number) => (
                 <div key={index}>
                   <h3>{new Date(item.dt * 1000).toLocaleDateString()}</h3>
-                  <p>{item.main.temp}°C</p>
+                  <p>{Math.round(item.main.temp)}°C</p>
                   <img
                     src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
                     alt={weather.weather[0].description}
                   />
-                  <p>{item.weather[0].description}</p>
+                  <p>
+                    {item.weather[0].description.charAt(0).toUpperCase() +
+                      item.weather[0].description.slice(1)}
+                  </p>
                 </div>
               ))}
             </div>
