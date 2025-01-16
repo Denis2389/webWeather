@@ -1,4 +1,7 @@
+import styles from './Forecast.module.scss'
+
 const Forecast = ({ forecast, weather }: { forecast: any }) => {
+
     const dailyForecast = forecast.list.filter((item: any, index: number, array: any[]) => {
       const date = new Date(item.dt * 1000).toLocaleDateString();
       const prevDate = index > 0 ? new Date(array[index - 1].dt * 1000).toLocaleDateString() : null;
@@ -8,9 +11,8 @@ const Forecast = ({ forecast, weather }: { forecast: any }) => {
     return (
       <div>
         {forecast && (
-          <div>
-            <h2>Температура на 5 дней</h2>
-            <div>
+          <div className={styles.container}>
+            <div className={styles.items}>
               {dailyForecast.map((item: any, index: number) => (
                 <div key={index}>
                   <h3>{new Date(item.dt * 1000).toLocaleDateString()}</h3>
