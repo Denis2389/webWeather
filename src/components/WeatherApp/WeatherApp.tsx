@@ -72,7 +72,7 @@ const WeatherApp = () => {
         if (cityFromIp) {
           setCity(cityFromIp);
           fetchWeather()
-          setCity('')
+          // setCity('')
         }
 
       } catch (error) {
@@ -86,7 +86,7 @@ const WeatherApp = () => {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && city.trim()) {
       fetchWeather();
-      setCity('')
+      // setCity('')
     }
   };
 

@@ -1,12 +1,32 @@
 .container {
-    width: 1280px;
-    height: 100%;
-    margin-top: 70px;
     color: rgba(255, 255, 255, 0.82);
+    margin-top: 60px;
 }
 
 .items {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
 }
+
+.item {
+    padding-right: 50px;
+    border-right: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:last-child {
+        border: none;
+    }
+
+    h3 {
+        margin-bottom: 10px;
+    }
+
+    img {
+        width: 70px;
+    }
+}
+
 

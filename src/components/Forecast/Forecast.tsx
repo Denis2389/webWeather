@@ -14,7 +14,7 @@ const Forecast = ({ forecast, weather }: { forecast: any }) => {
           <div className={styles.container}>
             <div className={styles.items}>
               {dailyForecast.map((item: any, index: number) => (
-                <div key={index}>
+                <div className={styles.item} key={index}>
                   <h3>{new Date(item.dt * 1000).toLocaleDateString()}</h3>
                   <p>{Math.round(item.main.temp)}°C</p>
                   <img
