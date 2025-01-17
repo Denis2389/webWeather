@@ -1,4 +1,5 @@
-import styles from './Forecast.module.scss'
+import styles from './Forecast.module.scss';
+import customIcons from '../customIcons/customIcons';
 
 const Forecast = ({ forecast, weather }: { forecast: any, weather: any }) => {
 
@@ -18,7 +19,7 @@ const Forecast = ({ forecast, weather }: { forecast: any, weather: any }) => {
                   <h3>{new Date(item.dt * 1000).toLocaleDateString()}</h3>
                   <p>{Math.round(item.main.temp)}°C</p>
                   <img
-                    src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+                    src={customIcons[weather.weather[0].main] || `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
                     alt={weather.weather[0].description}
                   />
                   <p>

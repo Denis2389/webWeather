@@ -6,12 +6,13 @@ import styles from './WeatherApp.module.scss'
 import getCurrentDate from "../CurrentDay/CurrentDay";
 import { FaWind, FaDroplet } from "react-icons/fa6";
 import { CiTempHigh } from "react-icons/ci";
+import customIcons from '../customIcons/customIcons'
 
 const WeatherApp = () => {
   const [city, setCity] = useState<string>("");
   const [weather, setWeather] = useState<any>(null);
   const [forecast, setForecast] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  // const [loading, setLoading] = useState<boolean>(false);
   const [currentDate, setCurrentDate] = useState<string>('')
 
   
@@ -26,7 +27,7 @@ const WeatherApp = () => {
 
   async function fetchWeather() {
     try {
-      setLoading(true);
+      // setLoading(true);
       const [weatherResponse, forecastResponse] = await Promise.all([
         axios.get(WEATHER_URL, {
           params: {
@@ -49,9 +50,10 @@ const WeatherApp = () => {
       setForecast(forecastResponse.data);
     } catch (error) {
       console.error(error);
-    } finally {
-      setLoading(false);
     }
+    // } finally {
+    //   // setLoading(false);
+    // }
   }
 
   useEffect(() => {
@@ -103,7 +105,7 @@ const WeatherApp = () => {
         onKeyDown={handleKeyDown}
       /> */}
 
-      {loading && <p>loading..</p>}
+      {/* {loading && <p>loading..</p>} */}
 
       {weather && (
         <div className={styles.mainContainer}>
@@ -119,7 +121,7 @@ const WeatherApp = () => {
           </div>
           <div className={styles.titleContainer}>
             <img
-              src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+              src={customIcons[weather.weather[0].main] || `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
               alt={weather.weather[0].description}
             />
             <div className={styles.desContainer}>
@@ -136,12 +138,12 @@ const WeatherApp = () => {
                 <p className={styles.hum}>
                   &nbsp;
                   <FaDroplet />
-                  &nbsp;Wind&nbsp;&nbsp;|&nbsp;&nbsp;{weather.main.humidity}%
+                  &nbsp;Вологість&nbsp;&nbsp;|&nbsp;&nbsp;{weather.main.humidity}%
                 </p>
                 <p className={styles.wind}>
                   &nbsp;
                   <FaWind />
-                  &nbsp;Hum&nbsp;&nbsp;|&nbsp;&nbsp;{weather.wind.speed} м/с
+                  &nbsp;Вiтер&nbsp;&nbsp;|&nbsp;&nbsp;{weather.wind.speed} м/с
                 </p>
               </div>
             </div>
