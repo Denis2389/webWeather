@@ -8,5 +8,6 @@ const getCurrentDate = () => {
     };
     return date.toLocaleDateString('uk-Uk', options);
   };
+  
 
   export default getCurrentDate

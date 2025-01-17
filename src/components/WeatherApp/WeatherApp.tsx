@@ -7,6 +7,7 @@ import getCurrentDate from "../CurrentDay/CurrentDay";
 import { FaWind, FaDroplet } from "react-icons/fa6";
 import { CiTempHigh } from "react-icons/ci";
 import customIcons from '../customIcons/customIcons'
+import cityNames from "../customNames/customNames";
 
 const WeatherApp = () => {
   const [city, setCity] = useState<string>("");
@@ -71,10 +72,10 @@ const WeatherApp = () => {
           },
         });
 
-        const cityFromIp = responseIp.data.city;
+        const regionFromIp = responseIp.data.region;
 
-        if (cityFromIp) {
-          setCity(cityFromIp);
+        if (regionFromIp) {
+          setCity(regionFromIp);
           fetchWeather()
           // setCity('')
         }
@@ -110,7 +111,7 @@ const WeatherApp = () => {
       {weather && (
         <div className={styles.mainContainer}>
           <div className={styles.nameFlex}>
-            <h2>{weather.name}</h2>
+            <h2>{cityNames[weather.name] || weather.name}</h2>
             <input
               type="text"
               value={city}
