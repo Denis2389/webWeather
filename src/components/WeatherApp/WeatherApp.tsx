@@ -8,6 +8,7 @@ import { FaWind, FaDroplet } from "react-icons/fa6";
 import { CiTempHigh } from "react-icons/ci";
 import customIcons from '../customIcons/customIcons'
 import cityNames from "../customNames/customNames";
+import MarqueeList from "../marquee/MarqueeList";
 
 const WeatherApp = () => {
   const [city, setCity] = useState<string>("");
@@ -121,8 +122,12 @@ const WeatherApp = () => {
             />
           </div>
           <div className={styles.titleContainer}>
+              <MarqueeList />
             <img
-              src={customIcons[weather.weather[0].main] || `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+              src={
+                customIcons[weather.weather[0].main] ||
+                `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`
+              }
               alt={weather.weather[0].description}
             />
             <div className={styles.desContainer}>
@@ -139,7 +144,8 @@ const WeatherApp = () => {
                 <p className={styles.hum}>
                   &nbsp;
                   <FaDroplet />
-                  &nbsp;Вологість&nbsp;&nbsp;|&nbsp;&nbsp;{weather.main.humidity}%
+                  &nbsp;Вологість&nbsp;&nbsp;|&nbsp;&nbsp;
+                  {weather.main.humidity}%
                 </p>
                 <p className={styles.wind}>
                   &nbsp;
