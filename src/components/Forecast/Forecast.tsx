@@ -1,6 +1,6 @@
 import styles from './Forecast.module.scss'
 
-const Forecast = ({ forecast, weather }: { forecast: any }) => {
+const Forecast = ({ forecast, weather }: { forecast: any, weather: any }) => {
 
     const dailyForecast = forecast.list.filter((item: any, index: number, array: any[]) => {
       const date = new Date(item.dt * 1000).toLocaleDateString();
