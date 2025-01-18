@@ -3,9 +3,28 @@ import customIcons from '../customIcons/customIcons';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import '../../../node_modules/swiper/swiper-bundle.min.css'
 
-const Forecast = ({ forecast, weather }: { forecast: any, weather: any }) => {
+interface WeatherItem {
+  description: string;
+  icon: string;
+}
 
-    const dailyForecast = forecast.list.filter((item: { dt: number; main: { temp: number }; weather: { description: string }[] }, index: number, array: any[]) => {
+interface ForecastItem {
+  dt: number;
+  main: { temp: number };
+  weather: WeatherItem[];
+}
+
+interface Forecast {
+  list: ForecastItem[];
+}
+
+interface Weather {
+  weather: { main: string; description: string; icon: string }[];
+}
+
+const Forecast = ({ forecast, weather }: { forecast: Forecast, weather: Weather }) => {
+
+    const dailyForecast = forecast.list.filter((item: ForecastItem, index: number, array: ForecastItem[]) => {
       const date = new Date(item.dt * 1000).toLocaleDateString();
       const prevDate = index > 0 ? new Date(array[index - 1].dt * 1000).toLocaleDateString() : null;
       return date !== prevDate;
@@ -39,7 +58,7 @@ const Forecast = ({ forecast, weather }: { forecast: any, weather: any }) => {
                   ))}
                 </Swiper>
               ) : (
-                dailyForecast.map((item: any, index: number) => (
+                dailyForecast.map((item, index) => (
                   <div className={styles.item} key={index}>
                     <h3>{new Date(item.dt * 1000).toLocaleDateString()}</h3>
                     <p>{Math.round(item.main.temp)}°C</p>
