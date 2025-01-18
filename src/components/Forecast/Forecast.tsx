@@ -17,7 +17,7 @@ const Forecast = ({ forecast, weather }: { forecast: any, weather: any }) => {
           <div className={styles.container}>
             <div className={styles.items}>
               {window.innerWidth <= 767 ? (
-                <Swiper spaceBetween={10} slidesPerView={2}>
+                <Swiper spaceBetween={20} slidesPerView={3}>
                   {dailyForecast.map((item, index) => (
                     <SwiperSlide key={index}>
                       <div className={styles.item}>

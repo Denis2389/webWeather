@@ -18,7 +18,17 @@
 }
 
 @media (min-width: 768px) and (max-width: 1279) {
+  .container { 
+    min-width: 768px;
+    max-width: 1279px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
   .container {
-    padding: 25px;
+    min-width: 320px;
+    max-width: 767px;
+    min-height: 100vh;
+    border-radius: 0px;
   }
 }

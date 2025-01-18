@@ -1,6 +1,5 @@
 .wrapper {
     padding: 80px;
-    
 }
 
 .nameFlex {
@@ -86,5 +85,33 @@
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+    .wrapper {
+        padding: 20px;
+    }
+
+    .nameFlex {
     
-  }
+        h2 {
+            font-size: 30px;
+        }
+        
+        input {
+            width: 135px;
+        }
+    }
+
+    .desContainer {
+    
+        h3 {
+            text-align: center;
+        }
+    
+        p {
+            display: flex;
+            align-items: center;
+        }
+    
+    }
+
+    
+}
