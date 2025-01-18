@@ -5,7 +5,7 @@ import '../../../node_modules/swiper/swiper-bundle.min.css'
 
 const Forecast = ({ forecast, weather }: { forecast: any, weather: any }) => {
 
-    const dailyForecast = forecast.list.filter((item: any, index: number, array: any[]) => {
+    const dailyForecast = forecast.list.filter((item: { dt: number; main: { temp: number }; weather: { description: string }[] }, index: number, array: any[]) => {
       const date = new Date(item.dt * 1000).toLocaleDateString();
       const prevDate = index > 0 ? new Date(array[index - 1].dt * 1000).toLocaleDateString() : null;
       return date !== prevDate;
